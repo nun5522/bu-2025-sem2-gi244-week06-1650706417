@@ -21,5 +21,15 @@ public class PlayerControllerExam02 : MonoBehaviour
     void Update()
     {
         verticalInput = moveAction.ReadValue<Vector2>().y;
+        transform.Translate(verticalInput * speed * Time.deltaTime * Vector3.right);
+
+        if (transform.position.z < -zRange)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, -zRange);
+        }
+        if (transform.position.z > zRange)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, zRange);
+        }
     }
 }
